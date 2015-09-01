@@ -23,14 +23,14 @@ Or install it yourself as:
 ## Usage
 1. Create a file with a starting grid, e.g.:
 
-    # in-the-beginning.txt
-    000
-    010
-    000
+        # in-the-beginning.txt
+        000
+        010
+        000
 
 2. Watch it come to life
 
-    $ conway in-the-beginning.txt
+        $ conway in-the-beginning.txt
 
 TODO: Write usage instructions here
 
