@@ -19,15 +19,15 @@ module Conway
 
     def next_board
       self.class.new(
-        grid.each_with_index.map do |row, x|
-          row.each_with_index.map do |cell, y|
+        grid.each_with_index.map do |row, y|
+          row.each_with_index.map do |cell, x|
             next_generation(x, y)
           end
         end
       )
     end
 
-    def next_generation( x, y)
+    def next_generation(x, y)
       living_neighbors = living_neighbors(x, y)
       schroedinger = cell_at(x, y)
 
@@ -49,7 +49,7 @@ module Conway
     end
 
     def cell_at(x, y)
-      cell_in_row(row(x), y)
+      cell_in_row(row(y), x)
     end
 
     def cell_in_row(row, index)
@@ -64,16 +64,16 @@ module Conway
 
     def neighbors_of(x, y)
       [
-        cell_at(x - 1, y),
-        cell_at(x - 1, y + 1),
         cell_at(x - 1, y - 1),
-
-        cell_at(x, y - 1),
-        cell_at(x, y + 1),
-
-        cell_at(x + 1, y),
-        cell_at(x + 1, y + 1),
+        cell_at(x    , y - 1),
         cell_at(x + 1, y - 1),
+
+        cell_at(x - 1, y),
+        cell_at(x + 1, y),
+
+        cell_at(x - 1, y + 1),
+        cell_at(x    , y + 1),
+        cell_at(x + 1, y + 1),
       ].compact
     end
 

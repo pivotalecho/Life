@@ -59,10 +59,10 @@ describe Conway do
       neighbors = board.neighbors_of(0, 0)
       expect(neighbors).to match_array(['b', 'd', 'e'])
 
-      neighbors = board.neighbors_of(0, 2)
+      neighbors = board.neighbors_of(2, 0)
       expect(neighbors).to match_array(['b', 'e', 'f'])
 
-      neighbors = board.neighbors_of(2, 1)
+      neighbors = board.neighbors_of(1, 2)
       expect(neighbors).to match_array(['d', 'e', 'f', 'g', 'i'])
     end
   end
