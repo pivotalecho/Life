@@ -48,6 +48,5 @@ describe Conway::Board do
         [0, 0, 0]
       ])
     end
-
   end
 end

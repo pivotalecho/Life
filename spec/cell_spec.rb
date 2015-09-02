@@ -7,9 +7,9 @@ class FakeBoard
     return nil if x > 2
 
     [
-      ['a', 'b', 'c'],
-      ['d', 'e', 'f'],
-      ['g', 'h', 'i']
+      %w(a b c),
+      %w(d e f),
+      %w(g h i),
     ][y][x]
   end
 end
@@ -21,16 +21,16 @@ describe Conway::Cell do
 
     it 'returns the neighbors of the cell' do
       cell.coords = [1, 1]
-      expect(cell.neighbors).to match_array(['a', 'b', 'c', 'd', 'f', 'g', 'h', 'i'])
+      expect(cell.neighbors).to match_array(%w(a b c d f g h i))
 
       cell.coords = [0, 0]
-      expect(cell.neighbors).to match_array(['b', 'd', 'e'])
+      expect(cell.neighbors).to match_array(%w(b d e))
 
       cell.coords = [2, 0]
-      expect(cell.neighbors).to match_array(['b', 'e', 'f'])
+      expect(cell.neighbors).to match_array(%w(b e f))
 
       cell.coords = [1, 2]
-      expect(cell.neighbors).to match_array(['d', 'e', 'f', 'g', 'i'])
+      expect(cell.neighbors).to match_array(%w(d e f g i))
     end
   end
 end
