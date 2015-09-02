@@ -1,21 +1,13 @@
 module Conway
   class Board
+    def self.parse(ascii_grid)
+      new(BoardParser.parse(ascii_grid))
+    end
+
     attr_reader :grid
 
     def initialize(array_grid)
       @grid = build_grid(array_grid)
-    end
-
-    def build_grid(array_grid)
-      array_grid.each_with_index.map do |row, y|
-        row.each_with_index.map do |cell, x|
-          Cell.new(cell, [x, y], self)
-        end
-      end
-    end
-
-    def self.parse(ascii_grid)
-      new(BoardParser.parse(ascii_grid))
     end
 
     def next_board
@@ -46,6 +38,16 @@ module Conway
 
     def to_s
       to_a.map { |row| row.join(" ") }.join("\n")
+    end
+
+    private
+
+    def build_grid(array_grid)
+      array_grid.each_with_index.map do |row, y|
+        row.each_with_index.map do |cell, x|
+          Cell.new(cell, [x, y], self)
+        end
+      end
     end
   end
 end
